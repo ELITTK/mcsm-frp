@@ -1,0 +1,20 @@
+version: "3"
+services:
+  server:
+    privileged: true
+#    image: dockerpull.org/elittk/mcsm-nas
+    build: 
+      context: . 
+      dockerfile: mcsm.dockerfile
+    stdin_open: true
+    tty: true
+    volumes:
+        - D:/Code/Docker/mcsm/volume/web/data:/opt/mcsmanager/web/data
+        - D:/Code/Docker/mcsm/volume/web/logs:/opt/mcsmanager/web/logs
+        - D:/Code/Docker/mcsm/volume/daemon/data:/opt/mcsmanager/daemon/data
+        - D:/Code/Docker/mcsm/volume/daemon/logs:/opt/mcsmanager/daemon/logs
+    ports:
+      - "48994:48994"
+      - "23333:23333"
+  ngix:
+  
